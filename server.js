@@ -11,9 +11,9 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 	connected = false;
 })
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => res.type('html').send('<h1>hello world</h1>'));
 
-	res.send('connected: '+ connected.toString())
-})
 
-app.listen(3000, () => console.log('connected'))
+app.post("/", (req, res) => res.send("post hit"));
+
+app.listen(process.env.PORT || 3000, () => console.log('connected'))
